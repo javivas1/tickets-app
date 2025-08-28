@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Gestión de Tickets</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="wrap header">
+    <h1>Gestión de Incidencias (Tickets)</h1>
+    <nav>
+      <button id="btnNew" class="btn">Nuevo Ticket</button>
+      <button id="btnExport" class="btn ghost">Exportar</button>
+      <label class="btn ghost" style="margin-left:6px; cursor:pointer;">
+        Importar <input id="fileImport" type="file" accept="application/json" style="display:none">
+      </label>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section id="alerts"></section>
+
+    <!-- Resumen -->
+    <section class="card" style="padding:12px 16px;">
+      <strong>Resumen:</strong>
+      <span id="cntOpen"   class="badge state-open">abierto: 0</span>
+      <span id="cntProg"   class="badge state-prog">en_progreso: 0</span>
+      <span id="cntClosed" class="badge state-closed">cerrado: 0</span>
+      <span id="cntTotal"  class="badge" style="background:#eef6ff;border:1px solid #cfe3ff">total: 0</span>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Listado de Tickets</h2>
+        <div class="filters">
+          <input id="q" type="search" placeholder="Buscar título o descripción…">
+          <select id="fEstado" title="Filtrar por estado">
+            <option value="">Todos los estados</option>
+            <option value="abierto">abierto</option>
+            <option value="en_progreso">en_progreso</option>
+            <option value="cerrado">cerrado</option>
+          </select>
+          <select id="fPrioridad" title="Filtrar por prioridad">
+            <option value="">Todas las prioridades</option>
+            <option value="baja">baja</option>
+            <option value="media">media</option>
+            <option value="alta">alta</option>
+          </select>
+          <select id="fOrder" title="Ordenar">
+            <option value="fecha_desc">Fecha ↓</option>
+            <option value="fecha_asc">Fecha ↑</option>
+            <option value="prioridad">Prioridad</option>
+            <option value="estado">Estado</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Título / Descripción</th>
+              <th>Prioridad</th>
+              <th>Estado</th>
+              <th>Creado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- Paginación -->
+      <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;padding:12px;">
+        <div>
+          <label for="pageSize">Por página:</label>
+          <select id="pageSize">
+            <option>5</option>
+            <option>10</option>
+            <option>20</option>
+          </select>
+        </div>
+        <div>
+          <button id="prevPage" class="btn ghost">« Anterior</button>
+          <span id="pageInfo" class="badge" style="background:#fff;border:1px solid var(--border)">1 / 1</span>
+          <button id="nextPage" class="btn ghost">Siguiente »</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <dialog id="dlg">
+    <form id="frm" method="dialog" novalidate>
+      <h3 id="dlgTitle">Nuevo Ticket</h3>
+      <input type="hidden" id="id" />
+      <div class="field">
+        <label for="titulo">Título</label>
+        <input id="titulo" name="titulo" required minlength="5" maxlength="120" placeholder="Ej: Error en login" />
+        <small class="hint">Mínimo 5, máximo 120 caracteres.</small>
+      </div>
+      <div class="field">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" required minlength="10" maxlength="1000" rows="4" placeholder="Describe el problema…"></textarea>
+        <small class="hint">Mínimo 10, máximo 1000 caracteres.</small>
+      </div>
+      <div class="grid">
+        <div class="field">
+          <label for="prioridad">Prioridad</label>
+          <select id="prioridad" name="prioridad" required>
+            <option value="baja">baja</option>
+            <option value="media">media</option>
+            <option value="alta">alta</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="estado">Estado</label>
+          <select id="estado" name="estado" required>
+            <option value="abierto">abierto</option>
+            <option value="en_progreso">en_progreso</option>
+            <option value="cerrado">cerrado</option>
+          </select>
+          <small class="hint">En creación se fijará en “abierto”.</small>
+        </div>
+      </div>
+      <div class="dlg-actions">
+        <button type="submit" class="btn">Guardar</button>
+        <button type="button" id="btnCancel" class="btn ghost">Cancelar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="wrap footer">
+    <small>© <span id="year"></span> Tickets Front</small>
+  </footer>
+
+  <script src="app.v4.js"></script>
+</body>
+</html>
+

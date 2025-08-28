@@ -1,0 +1,136 @@
+:root {
+  /* Paleta viva estilo Municipalidad de Guatemala */
+  --bg:#f2f6ff;                 /* fondo suave azulado */
+  --fg:#111827;                 /* texto principal */
+  --muted:#4b5563;              /* texto secundario */
+  --primary:#005bac;            /* azul vivo principal */
+  --primary-ink:#ffffff;        /* texto sobre primario */
+  --accent:#ffd200;             /* amarillo acento */
+  --ok:#28a745;                 /* verde éxito */
+  --warn:#ffb300;               /* amarillo/ámbar advertencia */
+  --danger:#e53935;             /* rojo alerta */
+  --card:#ffffff;
+  --border:#dbe2f2;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+  background:var(--bg);
+  color:var(--fg);
+}
+
+.wrap{max-width:1100px;margin:0 auto;padding:16px}
+
+/* Header */
+.header{
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(135deg,var(--primary) 0%, #0072ce 100%);
+  color:var(--primary-ink);
+  border-bottom:4px solid var(--accent);
+  border-radius:0 0 14px 14px;
+}
+.header h1{margin:0;font-size:1.35rem}
+.header nav .btn{margin-left:8px}
+
+/* Footer */
+.footer{color:var(--muted)}
+
+/* Cards / Tables */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  margin-top:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.05);
+}
+.card-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 16px;border-bottom:1px solid var(--border)
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters input,.filters select{min-width:180px}
+
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+th,td{padding:12px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+th{
+  text-align:left;font-weight:700;color:#0f172a;
+  background:linear-gradient(180deg,#f7fbff 0%, #eef5ff 100%);
+}
+
+/* Buttons & Links */
+.btn{
+  background:var(--primary);
+  color:var(--primary-ink);
+  border:0;border-radius:10px;
+  padding:10px 14px;cursor:pointer;
+  transition:transform .06s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow:0 4px 12px rgba(0,91,172,.25);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{
+  background:transparent;color:var(--primary);
+  border:2px solid var(--primary);
+  box-shadow:none;
+}
+.btn[disabled]{opacity:.6;cursor:not-allowed}
+
+.link{color:var(--primary);text-decoration:none;font-weight:600}
+.link:hover{text-decoration:underline}
+
+/* Inputs */
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+input,select,textarea{
+  padding:10px;border:1px solid var(--border);border-radius:10px;
+  background:#fff;
+  outline-color:#8ac6ff;
+}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:720px){.grid{grid-template-columns:1fr}}
+
+/* Badges (más vivos) */
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:.78rem;font-weight:700}
+
+/* Prioridades */
+.badge.low   {background:rgba(40,167,69,.12);   color:#1b5e20; border:1px solid rgba(40,167,69,.35);}   /* verde */
+.badge.mid   {background:rgba(255,210,0,.18);   color:#7a5800;  border:1px solid rgba(255,210,0,.45);}  /* amarillo */
+.badge.high  {background:rgba(229,57,53,.12);   color:#8a0f0f;  border:1px solid rgba(229,57,53,.35);}   /* rojo */
+
+/* Estados */
+.badge.state-open  {background:rgba(0,114,206,.12); color:#0a3d7a; border:1px solid rgba(0,114,206,.35);} /* azul claro */
+.badge.state-prog  {background:rgba(0,91,172,.15);  color:#064c96; border:1px solid rgba(0,91,172,.35);}  /* azul medio */
+.badge.state-closed{background:#e9eef7;             color:#475569; border:1px solid #d7e1f2;}            /* gris azulado */
+
+/* Alerts */
+#alerts{margin:8px 0}
+.alert{
+  padding:12px;border-radius:10px;margin:6px 0;border:1px solid var(--border);
+  background:#fff
+}
+.alert.ok{
+  background:linear-gradient(180deg,#ecfff5 0%, #d7ffea 100%);
+  color:#0f6b3e;border-color:#a7f3d0
+}
+.alert.err{
+  background:linear-gradient(180deg,#fff2f2 0%, #ffe3e2 100%);
+  color:#7f1d1d;border-color:#fecaca
+}
+
+/* Dialog */
+dialog{border:0;border-radius:12px;max-width:720px;width:100%;padding:0;box-shadow:0 20px 40px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(0,0,0,.35)}
+#frm{padding:16px}
+.dlg-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:6px}
+
+/* Paginación / barra inferior */
+.wrap .badge{vertical-align:middle}
+#pageInfo{margin:0 6px}
+
+/* Utilidades */
+small.hint{color:var(--muted)}
+
