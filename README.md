@@ -158,5 +158,5 @@ curl -X POST http://localhost/tickets-app/tickets-backend/patch_estado.php \
 
 ## 📸 Vista previa
 
-![Listado de tickets](tickets-frontend/front.png)
-![Listado de base de datos](tickets-frontend/db.png)
+![Listado de tickets](front.png)
+![Listado de base de datos](db.png)
