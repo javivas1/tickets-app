@@ -13,7 +13,7 @@ Navegador moderno (Edge, Chrome, Firefox)
 
 Git para control de versiones
 
-⚙️ Instalación
+- Instalación
 
 Clona o descarga este repositorio en tu carpeta htdocs de XAMPP:
 
@@ -119,7 +119,7 @@ Botón Siguiente estado para avanzar en el flujo.
 
 Botón Eliminar para borrar ticket.
 
-📋 Buenas prácticas aplicadas
+-  Prácticas aplicadas
 
 Separación Frontend/Backend: HTML+CSS+JS por un lado, API en PHP/MySQL por otro.
 
